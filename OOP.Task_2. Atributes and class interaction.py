@@ -25,15 +25,14 @@ class Reviewer(Mentor):  # Persons, who check homework
     def __init__(self, name, surname):
         super().__init__(name, surname)
         self.reviewer_atr = 'Проверяющие проверяют домашние задания'
-
-def rate_hw(self, student, course, grade):
-    if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
-        if course in student.grades:
-            student.grades[course] += [grade]
+    def rate_hw(self, student, course, grade):
+        if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
+            if course in student.grades:
+                student.grades[course] += [grade]
+            else:
+                student.grades[course] = [grade]
         else:
-            student.grades[course] = [grade]
-    else:
-        return 'Ошибка'
+            return 'Ошибка'
 
 
 # best_student = Student('Ruoy', 'Eman', 'your_gender')
